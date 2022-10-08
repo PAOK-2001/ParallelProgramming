@@ -9,6 +9,7 @@ To compile this project run the **make** command. The binary can be erased by ru
 # Performance testing
 The code was tested for 10,000,000 using 1 thread, 2 threads, 4 threads, 8 threads, and 16 threads. An average of 8 executions was taken.
 ## Time vs Threads
+![Time](figures/Average%20time.png?raw=true "Test1")
 
 ## CPU Usage
 
