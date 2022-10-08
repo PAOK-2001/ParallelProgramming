@@ -12,7 +12,7 @@ pthread_mutex_t lock;
 // Function to run part of montecarlo pi estimation.
 // Takes as argument THREAD_NUM to divide the for into N chunks
 void* montecarlo_chunk(void * THREAD_NUM){
-    int temp = 0;
+    int temp = 0; // temporary value to increment
     double x_coord, y_coord;
     srand(time(NULL));
     for (int i = 0; i < (TOTAL_PIXEL/(int)THREAD_NUM); i++){
@@ -31,6 +31,7 @@ void* montecarlo_chunk(void * THREAD_NUM){
 }
 
 int main(int argc, char* argv[]){ 
+    int start = clock();
     // Parse the number of threads
     const int THREAD_NUM = atoi(argv[1]);
     int returnCode;
@@ -50,12 +51,13 @@ int main(int argc, char* argv[]){
     for (int j = 0; j < THREAD_NUM; j++){
         pthread_join(threads[j],NULL);
     }
-    // Destroy mutex and free threads
+    // Destroy mutex and free
     pthread_mutex_destroy(&lock);
-    free(threads);
+    int end = clock();
     // Print values
-    printf("C: %d\nS: %d\n",circlePoints,squarePoints);
+    printf("Points in circle: %d ; Points in square: %d\n",circlePoints,squarePoints);
     pi = ((double)(4*circlePoints)/(squarePoints));
     printf("Pi estimation: %f\n",pi);
+    printf("Completed with %d threads\n",THREAD_NUM);
     
 }
