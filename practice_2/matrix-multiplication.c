@@ -1,3 +1,6 @@
+// Matrix Multiplication 
+// Pablo Agustín Ortega Kral A00344664
+// 05/11/2022
 #include <omp.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -69,9 +72,24 @@ void print_result(int rows, int cols, int** matrix2print){
 
 int main(int argc, char* argv[]){ 
     int numThreads = strtol(argv[1], NULL, 10);
-    omp_set_num_threads(numThreads);
+    int mSize = strtol(argv[2], NULL, 10);
+    int doPrint = strtol(argv[3], NULL, 10);
+
+    if(numThreads >1){
+        omp_set_num_threads(numThreads);
+    }else{
+        omp_set_num_threads(1);
+    }
     int arr1[2][3] = {{1, 2, 3}, {4, 5, 6}};
     int arr2[3][2] ={{7,8},{9,10},{11,12}};
-    int** matMul = matrix_multiplication(20,30,generate_random_matrix(20,30),30,20,generate_random_matrix(30,20));
-    print_result(20,20,matMul);
+    int ** matMul = matrix_multiplication(2,3,static2malloc(2,3,arr1),3,2,static2malloc(3,2,arr2));
+    //int** matMul = matrix_multiplication(mSize,mSize,generate_random_matrix(mSize,mSize),mSize,mSize,generate_random_matrix(mSize,mSize));
+    if(doPrint == 1){
+        print_result(2,2,matMul);
+        //print_result(mSize,mSize,matMul);
+    }
 }
+
+ /*Validitation test case
+
+ */
