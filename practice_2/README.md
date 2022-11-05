@@ -4,6 +4,7 @@
 The objective of this lab was to a code in C that multiplies two matrixes of any size, provided these can be multiplied, and then use **OpenMP** to parallelize this operation. OpenMP is an API for shared-memory parallel programming in C and C++ .
 
 To validate the given approach, the code was tested for a small operation whose result was known.
+
 $$ {\left\lbrack \matrix{2 & 3 \cr 4 & 5} \right\rbrack} 
 * \left\lbrack \matrix{1 & 0 \cr 0 & 1} \right\rbrack
 = \left\lbrack \matrix{2 & 3 \cr 4 & 5} \right\rbrack
