@@ -5,6 +5,8 @@ The objective of this lab was to a code in C that multiplies two matrixes of any
 
 To validate the given approach, the code was tested for a small operation whose result was known.
 
+$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
+
 $$
 \begin{bmatrix} 1 && 2 &&3 
 \\ 4 && 2 && 6 \end{bmatrix} *
@@ -15,6 +17,8 @@ $$
 58 && 64 \\
 139 && 159\end{bmatrix}
 $$
+
+
 ![Validation](figures/Validation.png)
 *Validation for 1,8 and 16 threads*
 
