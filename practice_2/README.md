@@ -5,17 +5,19 @@ The objective of this lab was to a code in C that multiplies two matrixes of any
 
 To validate the given approach, the code was tested for a small operation whose result was known.
 
-$$ x = {-b \pm \sqrt{b^2-4ac} \over 2a} $$
-
 $$
-\begin{bmatrix} 1 && 2 &&3 
-\\ 4 && 2 && 6 \end{bmatrix} *
-\begin{bmatrix} 7 && 8 \\ 
-9 && 10 \\
-11 && 12\end{bmatrix} =
-\begin{bmatrix} 
-58 && 64 \\
-139 && 159\end{bmatrix}
+\begin{align}
+    \begin{bmatrix} 1 && 2 &&3 
+    \\ 4  &&  2  &&  6  \end{bmatrix} 
+    *
+    \begin{bmatrix} 7 && 8 \\ 
+    9 && 10 \\
+    11 && 12\end{bmatrix} 
+    =
+    \begin{bmatrix} 
+    58 && 64 \\
+    139 && 159\end{bmatrix}
+    \end{align}
 $$
 
 
