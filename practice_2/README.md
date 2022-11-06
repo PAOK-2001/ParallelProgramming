@@ -7,8 +7,8 @@ To validate the given approach, the code was tested for a small operation whose 
 
 $$
 \begin{align}
-    \begin{bmatrix} 1 && 2 &&3 
-    \\ 4  &&  2  &&  6  \end{bmatrix} 
+    \begin{bmatrix} 1 && 2 &&3 \\ 
+    4  &&  2  &&  6  \end{bmatrix} 
     *
     \begin{bmatrix} 7 && 8 \\ 
     9 && 10 \\
@@ -22,7 +22,6 @@ $$
 
 
 ![Validation](figures/Validation.png)
-*Validation for 1,8 and 16 threads*
 
 To compile this project run the **make** command. The binary can be erased by running **make clean**. The compiled binary takes as arguments the number of threads, the size of the square test matrixes and a flag that indicates if the result wishes to be printed or not.
 For instance, the following example multiplies two 300x300 matrixes using 8 threads. An printing the result.
