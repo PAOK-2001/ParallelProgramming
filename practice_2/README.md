@@ -23,8 +23,9 @@ $$
 
 ![Validation](figures/Validation.png)
 
-To compile this project run the **make** command. The binary can be erased by running **make clean**. The compiled binary takes as arguments the number of threads, the size of the square test matrixes and a flag that indicates if the result wishes to be printed or not.
-For instance, the following example multiplies two 300x300 matrixes using 8 threads. An printing the result.
+To compile this project run the **make** command. The binary can be erased by running **make clean**. The compiled binary takes as arguments the number of threads, the size of the square test matrixes and a 0 or 1 that indicates if the result wishes to be printed or not.
+
+For instance, the following example multiplies two 300x300 matrixes using 8 threads. And prints the result.
 ```
 ./MatMul 8 300 1
 ```
@@ -37,15 +38,17 @@ The code was tested for 300X300 matrixes using 1 to 4 and 13 to 16 threads. 64, 
 An average of 4 executions was taken for a more indicative result.
 ![Time](figures/Benchmark.png?raw=true)
 
-_#Note:_ A testing bash script was included, to use first compile using the Makefile and specify the range of threads to be tested and the size of the matrixes like so
+_#Note:_ A testing bash script was included. To use, first compile using the Makefile. Then run the script specifying the range of threads to be tested and the size of the matrixes like so
 
 ```
 ./test_suit.sh 1 16 300
 ```
 ## CPU Usage
-To verify that the threads are indeed running  separate on cores we can use a system monitoring tool such as **htop** to verify the CPU usage. By doing this, we can see that the load gets distributed between different cores. Here we showcase a 3000x3000 matrix multiplication using 1 vs 16 threads. We can clearly see that when running this demanding task on only one thread we saturate one core of the CPU (here core 14), forcing it to work at 100% capacity, whereas when we distribute the load all cores are used 
+To verify that the threads are indeed running on separate cores, we can use a system monitoring tool such as **htop** to verify the CPU usage. By doing this, we can see that the load gets distributed between different cores. Here we showcase a 3000x3000 matrix multiplication using 1 vs 16 threads. We can clearly see that when running this demanding task on only one thread we saturate one core of the CPU (here core 14), forcing it to work at 100% capacity, whereas when we distribute the load all cores are used 
 
 ![usage-1thread](figures/CPUse-1T.png?raw=true")*1 Thread*
+
+
 
 ![usage-20threads](figures/CPUse%20-16T.png?raw=true")*16 Threads*
 # Conclusion
