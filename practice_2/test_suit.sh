@@ -1,10 +1,9 @@
 #!/bin/bash
-# Basic while loop
-counter=1
-while [ $counter -le $1 ]
+counter=$1
+while [ $counter -le $2 ]
 do
 echo Running with $counter threads
-time ./MatMul $counter 300 0
+time ./MatMul $counter $3 0
 echo " "
-((counter++))
+((counter=counter + 1))
 done
