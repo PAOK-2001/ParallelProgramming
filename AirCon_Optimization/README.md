@@ -16,7 +16,14 @@ We can see that the heat equation makes sense as the room cools down and the tem
 
 ![HeatMap10](figures/heatmp10.png?raw=true "Heat map T=10")
 
-## Test and performance
+## Tests and performance
 ![Performance](figures/exection_graph.png?raw=true "Heat map T=10")
 
+![CPU-Use](figures/CPU-Usage.png?raw=true "Heat map T=10")
 ## Conclusion
+
+Parallel programming allows us to run block of code simultaneously by distributing their load on different cores of the CPU. The type of parallel programming shown here is shared memory (though the simulated scenario is distributed memory) and we are also showcasing two approaches for parallelizing shared memory problems:
+- _pthreads_: allows us to manually create and control the threads to run the code. Here we point the created threads to the functions we want them to run. We can group threads together using pthread_join. And to handle race conditions we use mutual exclusion.
+- _OpenMP_: intead about worrying about individual threads, we instead chose the blocks of code we want to run in parallel and specify how the variables relate to problem using the private and global scope, the API then takes care of the rest for us.
+
+Finally, as showed in the performance graph, we can see that parallel programming is a powerful tool to optimize runtime with demanding load. However, we can see that it is by no means _"free performance"_ as it comes at the cost of resource uses and as the number of threads increments we get diminishing returns as the hardware becomes our bottleneck.
