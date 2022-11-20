@@ -16,7 +16,7 @@
 #define HIGH 100
 #define LOW 60
 // N amount of time between measurments
-#define SAMPLE_RATE 8000
+#define SAMPLE_RATE 80000
 // Diferential Eq. constants
 #define GAMMA 0.00625 //using gammma provided by python implementation
 
@@ -120,8 +120,8 @@ void *assign_temp(void * THREAD_NUM){
 
 void differential_heat_eq(){
     int i,j,k;
-    #pragma omp parallel for private(i,j,k) shared(heat_map)
     for (k = 0; k < TIME_SIZE; k++){
+        #pragma omp parallel for private(i,j) shared(heat_map)
         for (i = 0; i<ROOM_ROWS; i++){
             for (j = 0; j < ROOM_COLUMNS;j++){
                 if (i == 0 || j == 0){ //Set boundaries for initial conditions to avoid indexing out of bounds

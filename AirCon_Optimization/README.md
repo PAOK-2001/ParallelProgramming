@@ -9,11 +9,14 @@ After this, we use a discretized form of the differential heat equation to estim
 ## Results
 ## Sensed temperature by robots
 We can see the given temperatures follow the provided distribution. With hot zones in the middle and cold zones on the sides.
-![HeathMap0](figures/heatmp0.png?raw=true "Usage 1 Thread")
+
+![HeathMap0](figures/heatmp0.png?raw=true "Heat map T=0")
 ## Predicted temperature 
 We can see that the heat equation makes sense as the room cools down and the temperature begins to normalize. The cool zones become warmer and the hot zones cool down.
-![HeathMap10](figures/heatmp10.png?raw=true "Usage 1 Thread")
+
+![HeatMap10](figures/heatmp10.png?raw=true "Heat map T=10")
 
 ## Test and performance
+![Performance](figures/exection_graph.png?raw=true "Heat map T=10")
 
 ## Conclusion
