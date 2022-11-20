@@ -7,6 +7,7 @@
 #include <omp.h>
 #include <pthread.h>
 #include <time.h>
+#include <limits.h>
 // Constants for room parameters
 #define ROOM_ROWS 6
 #define ROOM_COLUMNS 7
@@ -15,9 +16,9 @@
 #define HIGH 100
 #define LOW 60
 // N amount of time between measurments
-#define SAMPLE_RATE 20000
+#define SAMPLE_RATE 8000
 // Diferential Eq. constants
-#define GAMMA 0.01 //using gammma provided by python implementation
+#define GAMMA 0.00625 //using gammma provided by python implementation
 
 char temp_mat[ROOM_ROWS][ROOM_COLUMNS];
 int heat_map[TIME_SIZE][ROOM_COLUMNS][ROOM_ROWS];
@@ -25,14 +26,14 @@ int heat_map[TIME_SIZE][ROOM_COLUMNS][ROOM_ROWS];
 void init_matrix(){
     for (int row = 0; row < ROOM_ROWS; row++){
         for(int col = 0; col < ROOM_ROWS; col++){
-            heat_map[0][row][col] = -1;
+            heat_map[0][row][col] = INT_MIN;
         }
     }
 }
 
 void read_from_CSV(){
     char buffer[1024];
-    FILE *roomLayout = fopen("layout.csv", "r");
+    FILE *roomLayout = fopen("provided_layout.csv", "r");
     if(roomLayout == NULL){
         printf("Could not read CSV\n");
         return ;
@@ -50,15 +51,15 @@ void read_from_CSV(){
         row++;// Iterate rows
     }
 }
-
+// Check if room is complete
 void check_room_complete(){
     bool complete = false;
     while(!complete){
-        complete = true;
+        complete = true; // Assume room travesal is complete
         for (int row = 0; row < ROOM_ROWS; row++){
             for(int col = 0; col < ROOM_COLUMNS; col++){
-                if(heat_map[0][row][col] == -1){
-                    complete = false;
+                if(heat_map[0][row][col] == INT_MIN){
+                    complete = false; // Disprove if an intialized value is found
                 }
             }
         }
@@ -154,7 +155,7 @@ int main(int argc, char* argv[]){
     printf("Initial measurment T = O \n");
      for (int row = 0; row < ROOM_ROWS; row++){
         for(int col = 0; col < ROOM_COLUMNS; col++){
-            printf("%d ",heat_map[0][row][col]);
+            printf("%d,",heat_map[0][row][col]);
         }
         printf("\n");
     }
@@ -162,7 +163,7 @@ int main(int argc, char* argv[]){
     printf("Estimated value T = 1O \n");
      for (int row = 0; row < ROOM_ROWS; row++){
         for(int col = 0; col < ROOM_COLUMNS; col++){
-            printf("%d ",heat_map[10][row][col]);
+            printf("%d,",heat_map[10][row][col]);
         }
         printf("\n");
     }
